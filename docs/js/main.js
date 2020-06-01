@@ -17,7 +17,6 @@ class Code {
     }
     update() {
         if (this.collected) {
-            console.log("collected");
             this._div.remove();
             this.collected = false;
         }
@@ -120,7 +119,6 @@ class Enemy2 {
         this.yVelo += 1.2;
         this._y += this.yVelo;
         this.yVelo *= 0.95;
-
         if (this._y > 600) {
             this.jumping = false;
             this._y = 600;
@@ -309,12 +307,10 @@ class Game {
     }
     gameLoop() {
         if (this.checkCollision(this.robot.getFutureRectangle(), this.enemy2.getRectangle()) && !this.enemy2killed) {
-            console.log("collision");
             this.updateScore(1);
             this.enemy2.kill();
         }
         if (this.checkCollision(this.robot.getFutureRectangle(), this.enemy1.getRectangle()) && !this.enemy1killed) {
-            console.log("collision");
             this.updateScore(1);
             this.enemy1.kill();
         }
@@ -466,7 +462,6 @@ class GameTerminal1 {
         this.player.update();
         this.block.update();
         this.checkBlockPlayerCollision(this.player);
-        console.log("onegameloop");
         if (this.gameInstance.playingTerminal1) {
             requestAnimationFrame(() => this.gameLoop());
         }
@@ -501,8 +496,9 @@ class GameTerminal1 {
             b.top <= a.bottom);
     }
     gameOver() {
-        console.log("YOU HAVE DIED");
         document.getElementsByTagName("message")[0].innerHTML = `YOU HAVE DIED`;
+        this.gameInstance.playingTerminal1 = false;
+        this.gameInstance.gameLoop();
     }
     finnishGame() {
         this.gameInstance.playingTerminal1 = false;

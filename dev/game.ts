@@ -47,14 +47,12 @@ class Game {
     public gameLoop() {
         if (this.checkCollision(this.robot.getFutureRectangle(), this.enemy2.getRectangle()) && !this.enemy2killed) {
             //collision event enemy2
-            console.log("collision")
             
             this.updateScore(1)
             this.enemy2.kill()
         }
         if (this.checkCollision(this.robot.getFutureRectangle(), this.enemy1.getRectangle()) && !this.enemy1killed) {
             //collision event enemy1
-            console.log("collision")
             
             this.updateScore(1)
             this.enemy1.kill()

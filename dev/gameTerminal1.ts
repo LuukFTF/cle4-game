@@ -50,8 +50,6 @@ class GameTerminal1 {
 
         this.checkBlockPlayerCollision(this.player)
 
-        console.log("onegameloop")
-
         if(this.gameInstance.playingTerminal1) {
             requestAnimationFrame(()=>this.gameLoop())
         }
@@ -100,8 +98,10 @@ class GameTerminal1 {
         }
 
     gameOver() {
-        console.log("YOU HAVE DIED")
         document.getElementsByTagName("message")[0].innerHTML = `YOU HAVE DIED`
+        
+        this.gameInstance.playingTerminal1 = false
+        this.gameInstance.gameLoop()
     }
 
     finnishGame() {

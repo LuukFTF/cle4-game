@@ -40,7 +40,6 @@ class Code{
     public update() : void {
 
         if(this.collected) {
-            console.log("collected")
             this._div.remove()
             this.collected = false
         }
